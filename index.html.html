@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1xBet Cash Agent | Fast & Secure Deposits & Withdrawals</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e8000d;
+    --red-dark: #b0000a;
+    --gold: #f5c518;
+    --gold-dark: #d4a800;
+    --bg: #080a0f;
+    --bg2: #0e1118;
+    --bg3: #141820;
+    --surface: #1a2030;
+    --surface2: #202840;
+    --text: #f0f2f8;
+    --muted: #7a8499;
+    --border: rgba(245,197,24,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(8,10,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-badge {
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+  }
+
+  .logo-sub {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 8px 20px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(232,0,13,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,197,24,0.07) 0%, transparent 60%),
+      linear-gradient(160deg, #0e1118 0%, #080a0f 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,197,24,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,197,24,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,197,24,0.1);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 28px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 span.red { color: var(--red); }
+  .hero h1 span.gold { color: var(--gold); }
+
+  .hero p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(240,242,248,0.7);
+    max-width: 480px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+
+  .btn-primary:hover::after { transform: translateX(100%); }
+  .btn-primary:hover { background: var(--red-dark); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(245,197,24,0.1);
+  }
+
+  .hero-stats {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    animation: fadeLeft 0.8s 0.4s ease both;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 28px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    min-width: 180px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover {
+    border-color: rgba(245,197,24,0.4);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translate(30px, -50%); }
+    to { opacity: 1; transform: translate(0, -50%); }
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-wrap {
+    background: var(--red);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 60px;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.9);
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .marquee-item::after {
+    content: '✦';
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section {
+    padding: 100px 5%;
+    position: relative;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  .how {
+    background: var(--bg2);
+  }
+
+  .how-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .how-header .section-sub {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 48px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .step {
+    background: var(--bg3);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 28px;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .step:hover {
+    border-color: rgba(245,197,24,0.3);
+    transform: translateY(-4px);
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    line-height: 1;
+    color: rgba(245,197,24,0.12);
+    position: absolute;
+    top: 10px; right: 16px;
+  }
+
+  .step-icon {
+    width: 56px; height: 56px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 20px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .step h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .step p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+
+  .service-card:hover {
+    border-color: rgba(232,0,13,0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(232,0,13,0.1);
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, rgba(232,0,13,0.15), transparent 70%);
+    transition: all 0.3s;
+  }
+
+  .service-card:hover::before {
+    width: 150px; height: 150px;
+  }
+
+  .service-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .service-card p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-badge {
+    display: inline-block;
+    background: rgba(232,0,13,0.15);
+    border: 1px solid rgba(232,0,13,0.3);
+    color: #ff4d55;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+
+  /* ─── RATES ─── */
+  .rates {
+    background: var(--bg2);
+  }
+
+  .rates-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .rates-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .rates-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(245,197,24,0.07);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rates-table td {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .rates-table tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .badge-fast {
+    background: rgba(0,200,100,0.12);
+    border: 1px solid rgba(0,200,100,0.3);
+    color: #00c864;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    text-transform: uppercase;
+  }
+
+  .rates-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-left: 3px solid var(--gold);
+  }
+
+  .info-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .info-item h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .info-item p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .testi-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 28px;
+    position: relative;
+  }
+
+  .testi-card::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(245,197,24,0.1);
+    position: absolute;
+    top: -10px; left: 20px;
+    line-height: 1;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .testi-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240,242,248,0.75);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 40px; height: 40px;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .testi-name {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .testi-loc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: var(--bg2);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 120px;
+    clip-path: none;
+  }
+
+  .form-field select option {
+    background: var(--surface);
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.3s;
+  }
+
+  .contact-item:hover {
+    border-color: var(--border);
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(232,0,13,0.15);
+    border: 1px solid rgba(232,0,13,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-item h4 {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .contact-item p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .contact-item a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050508;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 50px 5% 30px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 280px;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  .footer-links h5 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    color: rgba(122,132,153,0.6);
+    max-width: 600px;
+    text-align: right;
+  }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .whatsapp-btn {
+    width: 58px; height: 58px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    animation: waBounce 2s ease infinite;
+    transition: transform 0.2s;
+  }
+
+  .whatsapp-btn:hover { transform: scale(1.1); }
+
+  @keyframes waBounce {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+  }
+
+  .whatsapp-label {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    white-space: nowrap;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .hero-stats { display: none; }
+    .rates-layout { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-badge">1XBET</span>
+    <span class="logo-sub">Cash Agent</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#rates">Rates</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Agent</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Authorized Cash Agent</div>
+    <h1>
+      DEPOSIT &amp;<br>
+      <span class="red">WITHDRAW</span><br>
+      <span class="gold">INSTANTLY</span>
+    </h1>
+    <p>Your trusted local 1xBet cash agent. Fast deposits, same-day withdrawals, and secure transactions — no bank required.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        💬 Contact Agent
+      </a>
+      <a href="#how" class="btn-outline">
+        How It Works →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Available</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Hidden Fees</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Fast Deposits</span>
+    <span class="marquee-item">Same-Day Withdrawals</span>
+    <span class="marquee-item">Secure Transactions</span>
+    <span class="marquee-item">No Bank Account Needed</span>
+    <span class="marquee-item">24/7 Support</span>
+    <span class="marquee-item">Trusted Agent</span>
+    <span class="marquee-item">Fast Deposits</span>
+    <span class="marquee-item">Same-Day Withdrawals</span>
+    <span class="marquee-item">Secure Transactions</span>
+    <span class="marquee-item">No Bank Account Needed</span>
+    <span class="marquee-item">24/7 Support</span>
+    <span class="marquee-item">Trusted Agent</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header">
+    <div class="section-tag">Simple Process</div>
+    <div class="section-title">HOW IT WORKS</div>
+    <p class="section-sub">Get your account funded in minutes with our simple 4-step process.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">📱</div>
+      <h3>Contact Us</h3>
+      <p>Reach out via WhatsApp, phone, or in person. Share your 1xBet account ID and transaction amount.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">💵</div>
+      <h3>Send Cash</h3>
+      <p>Pay via mobile money, bank transfer, or hand-deliver cash to our agent location.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">✅</div>
+      <h3>Confirm Transfer</h3>
+      <p>We verify your payment and initiate the 1xBet account top-up immediately.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-icon">🎯</div>
+      <h3>Start Betting</h3>
+      <p>Funds reflect in your account within minutes. Withdraw winnings the same way, anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">What We Offer</div>
+  <div class="section-title">OUR SERVICES</div>
+  <p class="section-sub">Full-service cash agent solutions for every 1xBet player.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <h3>Instant Deposit</h3>
+      <p>Top up your 1xBet account instantly with cash or mobile money. No delays, no hassle. Funds credited within minutes of payment confirmation.</p>
+      <span class="service-badge">Instant</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💰</span>
+      <h3>Cash Withdrawal</h3>
+      <p>Withdraw your winnings as cash. Same-day processing for withdrawals requested before cut-off time. Fast, reliable, and secure.</p>
+      <span class="service-badge">Same Day</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📲</span>
+      <h3>Mobile Money</h3>
+      <p>Compatible with all major mobile money platforms. Send and receive funds directly through your mobile wallet with ease.</p>
+      <span class="service-badge">All Networks</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔐</span>
+      <h3>Account Assistance</h3>
+      <p>Need help creating, verifying, or recovering your 1xBet account? Our agents provide full support to get you started quickly.</p>
+      <span class="service-badge">Full Support</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏆</span>
+      <h3>VIP Service</h3>
+      <p>High-volume players get priority processing, dedicated agent support, and preferential rates on large transactions.</p>
+      <span class="service-badge">Premium</span>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🤝</span>
+      <h3>Referral Bonus</h3>
+      <p>Refer friends and earn commission on their transactions. Join our growing network and build a steady income stream.</p>
+      <span class="service-badge">Earn More</span>
+    </div>
+  </div>
+</section>
+
+<!-- RATES -->
+<section class="rates" id="rates">
+  <div class="section-tag">Transparent Pricing</div>
+  <div class="section-title">RATES &amp; LIMITS</div>
+  <p class="section-sub">Competitive, transparent rates with no hidden charges.</p>
+
+  <div class="rates-layout">
+    <div>
+      <table class="rates-table">
+        <thead>
+          <tr>
+            <th>Transaction Type</th>
+            <th>Fee</th>
+            <th>Speed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Deposit (Cash)</td>
+            <td>Free</td>
+            <td><span class="badge-fast">Instant</span></td>
+          </tr>
+          <tr>
+            <td>Deposit (Mobile Money)</td>
+            <td>1%</td>
+            <td><span class="badge-fast">Instant</span></td>
+          </tr>
+          <tr>
+            <td>Withdrawal (Cash)</td>
+            <td>2%</td>
+            <td><span class="badge-fast">Same Day</span></td>
+          </tr>
+          <tr>
+            <td>Withdrawal (Mobile Money)</td>
+            <td>1.5%</td>
+            <td><span class="badge-fast">1–2 Hours</span></td>
+          </tr>
+          <tr>
+            <td>Account Registration</td>
+            <td>Free</td>
+            <td><span class="badge-fast">Instant</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rates-info">
+      <div class="info-item">
+        <div class="info-icon">📉</div>
+        <div>
+          <h4>Minimum Transaction</h4>
+          <p>Deposits from as low as $1 equivalent. No minimum requirement for withdrawals.</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📈</div>
+        <div>
+          <h4>Maximum Per Transaction</h4>
+          <p>Up to $500 per single transaction. Higher limits available for VIP clients upon request.</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h4>Operating Hours</h4>
+          <p>Available daily from 8:00 AM – 10:00 PM. Emergency transactions by arrangement.</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🔒</div>
+        <div>
+          <h4>100% Secure</h4>
+          <p>Every transaction is logged and receipted. Your funds and data are fully protected.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+<section id="payment" style="background: var(--bg3);">
+  <div class="section-tag">How To Pay</div>
+  <div class="section-title">PAYMENT METHODS</div>
+  <p class="section-sub">Multiple ways to deposit and withdraw — choose what's easiest for you.</p>
+
+  <div class="services-grid" style="margin-top:50px;">
+
+    <!-- Bank Transfer -->
+    <div class="service-card">
+      <span class="service-icon">🏦</span>
+      <h3>Bank Transfer</h3>
+      <p>Direct bank transfer to our account. Send funds and share the receipt via WhatsApp for instant confirmation.</p>
+      <!-- BOC -->
+      <div style="margin-top:16px; background:rgba(245,197,24,0.06); border:1px solid rgba(245,197,24,0.15); padding:14px 16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:2px;">🏦 Bank of Ceylon (BOC)</div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Name</span>
+          <span style="font-weight:600;">WMKW ARIYADASA</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Account No.</span>
+          <span style="font-weight:600; color:var(--gold); font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px;">95135775</span>
+        </div>
+      </div>
+      <!-- HNB -->
+      <div style="margin-top:10px; background:rgba(245,197,24,0.06); border:1px solid rgba(245,197,24,0.15); padding:14px 16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:2px;">🏦 Hatton National Bank (HNB)</div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Name</span>
+          <span style="font-weight:600;">WMKW ARIYADASA</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Account No.</span>
+          <span style="font-weight:600; color:var(--gold); font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px;">111020228180</span>
+        </div>
+      </div>
+      <span class="service-badge" style="margin-top:14px; display:inline-block;">Instant Confirm</span>
+    </div>
+
+    <!-- Dialog eZ Cash -->
+    <div class="service-card">
+      <span class="service-icon">📲</span>
+      <h3>Dialog eZ Cash</h3>
+      <p>Send via Dialog eZ Cash mobile wallet directly to our number. Fast and available island-wide.</p>
+      <div style="margin-top:16px; background:rgba(245,197,24,0.06); border:1px solid rgba(245,197,24,0.15); padding:14px 16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Network</span>
+          <span style="font-weight:600;">Dialog eZ Cash</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Number</span>
+          <span style="font-weight:600; color:var(--gold); font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:2px;">0768093961</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Name</span>
+          <span style="font-weight:600;">WMKW ARIYADASA</span>
+        </div>
+      </div>
+      <span class="service-badge" style="margin-top:14px; display:inline-block;">Instant</span>
+    </div>
+
+    <!-- USDT Crypto -->
+    <div class="service-card">
+      <span class="service-icon">₮</span>
+      <h3>USDT (Tether)</h3>
+      <p>Pay with USDT cryptocurrency. Send to our wallet address and share the transaction hash for verification.</p>
+      <div style="margin-top:16px; background:rgba(245,197,24,0.06); border:1px solid rgba(245,197,24,0.15); padding:14px 16px; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; justify-content:space-between; font-size:13px; align-items:center;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600;">Network</span>
+          <span style="font-weight:600;">TRC-20 (TRON)</span>
+        </div>
+        <div style="font-size:13px;">
+          <span style="color:var(--muted); letter-spacing:1px; text-transform:uppercase; font-size:11px; font-weight:600; display:block; margin-bottom:6px;">Wallet Address</span>
+          <span id="walletAddr" style="font-size:11px; color:var(--gold); word-break:break-all; font-family:monospace; background:rgba(0,0,0,0.3); padding:6px 8px; display:block; border-radius:2px; cursor:pointer;" onclick="copyWallet()" title="Click to copy">YOUR_USDT_WALLET_ADDRESS</span>
+          <span style="font-size:10px; color:var(--muted); margin-top:4px; display:block;">👆 Click to copy</span>
+        </div>
+      </div>
+      <span class="service-badge" style="margin-top:14px; display:inline-block;">Crypto</span>
+    </div>
+
+  </div>
+
+  <div style="margin-top:28px; background:rgba(232,0,13,0.08); border:1px solid rgba(232,0,13,0.2); border-left:3px solid var(--red); padding:16px 20px; font-size:13px; color:var(--muted); line-height:1.7;">
+    ⚠️ <strong style="color:var(--text);">Important:</strong> After making any payment, always send the receipt or transaction screenshot to our WhatsApp (<a href="https://wa.me/94768093961" style="color:var(--gold);">0768093961</a>) for confirmation. Do not share your 1xBet password with anyone.
+  </div>
+</section>
+
+<script>
+function copyWallet() {
+  const addr = document.getElementById('walletAddr').innerText;
+  navigator.clipboard.writeText(addr).then(() => {
+    document.getElementById('walletAddr').innerText = '✅ Copied!';
+    setTimeout(() => { document.getElementById('walletAddr').innerText = addr; }, 2000);
+  });
+}
+</script>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-tag">Client Reviews</div>
+  <div class="section-title">WHAT CLIENTS SAY</div>
+
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Fastest cash agent I've used. Deposited and the funds were in my account before I even sat down. Highly recommend!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Kwame A.</div>
+          <div class="testi-loc">Regular Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Withdrew my winnings in cash same day. No stress, no complications. This agent is professional and trustworthy.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Mohammed I.</div>
+          <div class="testi-loc">VIP Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">They helped me set up my 1xBet account and made my first deposit in minutes. Great service, will definitely use again!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Amina S.</div>
+          <div class="testi-loc">New Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <div class="section-title">CONTACT AGENT</div>
+  <p class="section-sub">Fill the form or reach out directly. We respond within minutes.</p>
+
+  <div class="contact-layout">
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+1 234 567 890">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>1xBet Account ID</label>
+        <input type="text" placeholder="Your 1xBet ID">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Transaction Type</label>
+          <select>
+            <option>Deposit</option>
+            <option>Withdrawal</option>
+            <option>Account Help</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Amount</label>
+          <input type="number" placeholder="0.00">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Additional Notes</label>
+        <textarea placeholder="Any special instructions or questions..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center; border:none; cursor:pointer;" onclick="alert('Message sent! An agent will contact you shortly.')">
+        📩 Send Request
+      </button>
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/94768093961">0768093961</a></p>
+          <p style="margin-top:4px; font-size:11px;">Fastest response channel</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Phone / Call</h4>
+          <p><a href="tel:0768093961">0768093961</a></p>
+          <p style="margin-top:4px; font-size:11px;">Available 8AM – 10PM daily</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Walk-In Location</h4>
+          <p>123 Main Street, City Center</p>
+          <p style="margin-top:4px; font-size:11px;">Mon–Sat 9AM–8PM</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:kusalwasana79@gmail.com">kusalwasana79@gmail.com</a></p>
+          <p style="margin-top:4px; font-size:11px;">For receipts and records</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:12px; display:flex;">
+        <span class="logo-badge">1XBET</span>
+        <span class="logo-sub" style="padding-left:10px;">Cash Agent</span>
+      </a>
+      <p>Your trusted local cash agent for 1xBet deposits and withdrawals. Fast, secure, and always available.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#rates">Rates & Limits</a></li>
+        <li><a href="#contact">Contact Agent</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">WhatsApp Chat</a></li>
+        <li><a href="#">Call Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 1xBet Cash Agent. All rights reserved.</p>
+    <p class="footer-disclaimer">This is an independent cash agent service. Not officially affiliated with 1xBet. Please gamble responsibly. 18+</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="whatsapp-la
